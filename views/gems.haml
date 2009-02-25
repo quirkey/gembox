@@ -1,0 +1,6 @@
+#gems
+  -@gems.sort.each do |gem_name, spec|
+    .gem
+      =link_to(gem_name, "/gems/#{gem_name}")
+      .versions
+        %span Versions
