@@ -1,4 +1,14 @@
-require 'active_support/ordered_hash'
+require 'active_support'
+
+class ActiveSupport::OrderedHash
+  def to_a
+    a = []
+    @keys.each do |key|
+      a << [key, self[key]]
+    end
+    a
+  end
+end
 
 module Gembox
   class Gems

@@ -1,8 +1,11 @@
 #gems
-  -@gems.each do |gem_name, specs|
-    .gem
-      =link_to(gem_name, "/gems/#{gem_name}")
-      .versions
-        %span 
-          Versions
-          =specs.collect {|spec| spec.version }.join(', ')
+  -@gems.to_a.in_groups_of(@gems.length / 2).each do |gems|
+    .column
+      -gems.compact.each do |gem_name, specs|
+        .gem
+          =link_to(gem_name, "/gems/#{gem_name}")
+          .versions
+            %span 
+              Versions
+              =specs.collect {|spec| spec.version }.join(', ')
+  .clear
