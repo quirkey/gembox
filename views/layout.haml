@@ -8,8 +8,21 @@
   %body
     #container
       #header
-        %h1 Gembox
-      #main
+        .contained
+          %img{:src => '/images/rubygems-125x125t.png', :alt => 'Rubygems logo', :id => 'logo'}
+          %h1 Gembox
+      #nav
+        .contained
+          .search
+            %form{:method => 'get', :action => '/gems'}
+              %input{:type => 'text'}
+              %input{:type => 'submit', :value => 'Search'}
+          .view_options
+            View as
+            =link_to('Columns', {:as => 'columns'})
+            =' / '
+            =link_to('Table', {:as => 'table'})
+      #main.contained
         =yield
       #footer
         %p.copyright 

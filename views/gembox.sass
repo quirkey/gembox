@@ -1,15 +1,43 @@
 !red = #BA2818
 !light_red = #EB9281
+!dark_red = #871D1A
 !light_grey = #CCCCCC
 
 body
   :font-family 'Franklin Gothic', 'Franklin Gothic Medium', Helvetica, sans-serif
   :background #FFFFFF
+  :margin 0px
+  :padding 0px
+  :text-align center
   
-a:link
+a:link,
+a:visited
   :color = !red
   :text-decoration none
-a:visited
-  :color = !light_red
 a:hover
+  :color = !light_red
   :text-decoration underline
+
+.contained
+  :width 960px
+  :margin 0px auto
+  :text-align left
+  :position relative
+
+#header
+  .contained
+    :width 400px
+  #logo
+    :position absolute
+    :top -20px
+    :left -135px
+  h1
+    :color = !dark_red
+    :font-size 50px
+    :margin 20px 0px 0px 0px
+
+#nav
+  :background = !dark_red
+  :padding 15px
+  .search
+    

@@ -5,13 +5,20 @@ require File.join(File.dirname(__FILE__), 'lib', 'gembox')
 Gembox::Gems.load
 
 helpers do
-  def link_to(text, link = nil)
+  def link_to(text, link = nil)         
     link ||= text
+    link = url_for(link)
     "<a href=\"#{link}\">#{text}</a>"
   end
   
-  def escape(text)
-    CGI.escapeHTML(text)
+  def url_for(link_options)
+    case link_options
+    when Hash
+      path = link_options.delete(:path) || request.path_info
+      path + '?' + build_query(params.merge(link_options))
+    else
+      link_options
+    end
   end
 end
 
@@ -31,9 +38,7 @@ get '/' do
 end
 
 get '/gems/?' do
-  
-end
-
-get '/gems/:name' do
-  
+  show_layout = params[:layout] != 'false'
+  @show_as = params[:as] || 'columns'
+  haml :gems, :layout => show_layout
 end
