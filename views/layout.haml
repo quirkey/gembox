@@ -1,6 +1,19 @@
 %html{:xmlns=> "http://www.w3.org/1999/xhtml", 'xml:lang' => "en", :lang => "en"}
   %head
     %meta{'http-equiv' => "Content-Type", 'content' => "text/html; charset=utf-8"}
-    %title gembox
+    %title Gembox
+    -['jquery', 'jquery.ui', 'jquery.metadata', 'jquery.form', 'base', 'gembox'].each do |jslib|
+      %script{'type' => 'text/javascript', 'src' => jslib}
   %body
-    = yield
+    #container
+      #header
+        %h1 Gembox
+      #main
+        = yield
+      #footer
+        %p.copyright Gembox, developed by 
+          =link_to 'Quirkey', 'http://code.quirkey.com'
+          . Powered by
+          =link_to 'Sinatra.', 'http://sinatrrb.com'
+        %p.copyright Hey! I'm 
+          =link_to 'open-source!', 'http://github.com/quirkey/gembox'
