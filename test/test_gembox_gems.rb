@@ -8,7 +8,7 @@ describe 'Gembox::Gems' do
     end
 
     should "load local gems" do
-      Gembox::Gems.local_gems.should.be.an instance_of(Hash)
+      Gembox::Gems.local_gems.should.be.an instance_of(ActiveSupport::OrderedHash)
     end
 
     should "load source index into source_index" do
@@ -22,8 +22,8 @@ describe 'Gembox::Gems' do
       @gems = Gembox::Gems.local_gems
     end
 
-    should "return hash of gems" do
-      @gems.should.be.an instance_of(Hash)
+    should "return ActiveSupport::OrderedHash of gems" do
+      @gems.should.be.an instance_of(ActiveSupport::OrderedHash)
     end
 
     should "only have one entry per gem" do
@@ -44,7 +44,7 @@ describe 'Gembox::Gems' do
     end
     
     should "return a hash of gem specs" do
-      @gems.should.be.an instance_of(Hash)
+      @gems.should.be.an instance_of(ActiveSupport::OrderedHash)
     end
     
     should "only have one entry per gem" do

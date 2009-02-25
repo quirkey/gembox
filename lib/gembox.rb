@@ -1,3 +1,5 @@
+require 'active_support/ordered_hash'
+
 module Gembox
   class Gems
     
@@ -21,11 +23,13 @@ module Gembox
       
       protected
       def group_gems(gem_collection)
-        gem_hash = Hash.new {|h,k| h[k] = [] }
+        gem_hash = ActiveSupport::OrderedHash.new {|h,k| h[k] = [] }
         gem_collection = gem_collection.values if gem_collection.is_a?(Hash)
         gem_collection.each do |spec|
           gem_hash[spec.name] << spec
+          gem_hash[spec.name].sort! {|a,b| (b.version || 0) <=> (a.version || 0) }
         end
+        gem_hash.keys.sort! {|a,b| a.downcase <=> b.downcase}
         gem_hash
       end
     end

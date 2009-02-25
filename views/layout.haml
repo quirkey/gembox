@@ -15,7 +15,7 @@
         .contained
           .search
             %form{:method => 'get', :action => '/gems'}
-              %input{:type => 'text'}
+              %input{:type => 'text', :name => 'search'}
               %input{:type => 'submit', :value => 'Search'}
           .view_options
             View as

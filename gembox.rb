@@ -39,6 +39,14 @@ end
 
 get '/gems/?' do
   show_layout = params[:layout] != 'false'
-  @show_as = params[:as] || 'columns'
-  haml :gems, :layout => show_layout
+  show_as = params[:as] || 'columns'
+  haml "gems_#{show_as}".to_sym, :layout => show_layout
+end
+
+get '/gems/:name/?' do
+  show_layout = params[:layout] != 'false'
+  @gem = Gembox::Gems.search(params[:name])
+  not_found if @gem.empty?
+  @gem = @gem.shift[1]
+  haml :gem, :layout => show_layout
 end
