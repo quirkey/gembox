@@ -9,11 +9,13 @@
       #header
         %h1 Gembox
       #main
-        = yield
+        =yield
       #footer
-        %p.copyright Gembox, developed by 
-          =link_to 'Quirkey', 'http://code.quirkey.com'
-          . Powered by
+        %p.copyright 
+          Gembox, developed by 
+          =link_to 'Quirkey.', 'http://code.quirkey.com'
+          Powered by
           =link_to 'Sinatra.', 'http://sinatrrb.com'
-        %p.copyright Hey! I'm 
+        %p.copyright 
+          Hey! I'm 
           =link_to 'open-source!', 'http://github.com/quirkey/gembox'
