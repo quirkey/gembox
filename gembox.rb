@@ -18,8 +18,11 @@ end
 set :public, 'public'
 set :views,  'views'
 
-get '/' do
+before do
   @gems = Gembox::Gems.local_gems
+end
+
+get '/' do
   haml :index
 end
 
