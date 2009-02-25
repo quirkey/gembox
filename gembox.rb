@@ -22,6 +22,10 @@ before do
   @gems = Gembox::Gems.local_gems
 end
 
+get '/stylesheets/:stylesheet.css' do
+  sass params[:stylesheet].to_sym
+end
+
 get '/' do
   haml :index
 end
