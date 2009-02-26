@@ -3,9 +3,8 @@
     .column
       -gems.compact.each do |gem_name, specs|
         .gem
-          =link_to(gem_name, "/gems/#{gem_name}")
+          %h4=link_to(gem_name, "/gems/#{gem_name}")
           .versions
             %span 
-              Versions
-              =specs.collect {|spec| spec.version }.join(', ')
+              =specs.collect {|spec| link_to(spec.version, "/gems/#{gem_name}/#{spec.version}") }.join(', ')
   .clear

@@ -1,1 +1,21 @@
-=@gem.inspect
+#gem
+  %h2
+    =@gem.name
+    %span.version=@gem.version
+  
+  .description
+    %p=@gem.description
+    %p.authors
+      By 
+      =@gem.authors.join(', ')
+      ='(' + link_to(@gem.email, "mailto:#{@gem.email}") + ')'
+    %p.url=link_to(@gem.homepage)
+  .dependencies
+    %h3 Dependencies
+    -@gem.dependencies.each do |dependency|
+      .gem
+        =link_to(dependency.name, "/gems/#{dependency.name}")
+        %span.version=dependency.version_requirements
+    
+
+%pre=@gem.to_yaml

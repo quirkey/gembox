@@ -45,8 +45,9 @@ end
 
 get '/gems/:name/?' do
   show_layout = params[:layout] != 'false'
-  @gem = Gembox::Gems.search(params[:name])
-  not_found if @gem.empty?
-  @gem = @gem.shift[1]
+  @gems = Gembox::Gems.search(params[:name])
+  not_found if @gems.empty?
+  @gem_versions = @gems.shift[1]
+  @gem = @gem_versions.shift
   haml :gem, :layout => show_layout
 end
