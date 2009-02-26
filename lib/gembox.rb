@@ -1,16 +1,45 @@
 require 'active_support'
 
-class ActiveSupport::OrderedHash
-  def to_a
-    a = []
-    @keys.each do |key|
-      a << [key, self[key]]
-    end
-    a
-  end
-end
 
 module Gembox
+  class GemList < Array
+    
+    def [](key)
+      if key.is_a?(String)
+        search(key)
+      else
+        super
+      end
+    end
+    
+    def []=(key, value)
+      if key.is_a?(String)
+        if versions = search(key)
+          versions.replace([key, value])
+        else
+          self << [key, value]
+        end
+      else
+        super
+      end
+    end
+    
+    def search(key)
+      i = find {|v| 
+        if v.is_a?(Array)
+          v[0] == key
+        else
+          v == key
+        end
+      }
+      i.is_a?(Array) ? i[1] : i
+    end
+    
+    def has_key?(key)
+      !search(key).nil?
+    end
+  end
+  
   class Gems
     
     class << self
@@ -31,16 +60,23 @@ module Gembox
         group_gems(gems)
       end
       
+      def stats
+        num_versions = source_index.length
+        num_gems     = local_gems.length
+        oldest_gem   = source_index.min {|a,b| a[1].date <=> b[1].date }.last
+        {:num_versions => num_versions, :num_gems => num_gems, :oldest_gem => oldest_gem}
+      end
+      
       protected
       def group_gems(gem_collection)
-        gem_hash = ActiveSupport::OrderedHash.new {|h,k| h[k] = [] }
+        gem_hash = GemList.new
         gem_collection = gem_collection.values if gem_collection.is_a?(Hash)
         gem_collection.each do |spec|
+          gem_hash[spec.name] ||= []
           gem_hash[spec.name] << spec
           gem_hash[spec.name].sort! {|a,b| (b.version || 0) <=> (a.version || 0) }
         end
-        gem_hash.keys.sort! {|a,b| a.downcase <=> b.downcase}
-        gem_hash
+        gem_hash.sort {|a, b| a[0].downcase <=> b[0].downcase } 
       end
     end
     

@@ -13,6 +13,19 @@
           %h1 Gembox
       #nav
         .contained
+          .stats
+            %p
+              You have
+              =@stats[:num_versions]
+              versions of
+              =@stats[:num_gems]
+              gems.
+            %p
+              Your oldest gem is
+              =@stats[:oldest_gem].name
+              from
+              =@stats[:oldest_gem].date
+            
           .search
             %form{:method => 'get', :action => '/gems'}
               %input{:type => 'text', :name => 'search'}

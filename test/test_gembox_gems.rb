@@ -8,7 +8,7 @@ describe 'Gembox::Gems' do
     end
 
     should "load local gems" do
-      Gembox::Gems.local_gems.should.be.an instance_of(ActiveSupport::OrderedHash)
+      Gembox::Gems.local_gems.should.be.an instance_of(Array)
     end
 
     should "load source index into source_index" do
@@ -22,8 +22,8 @@ describe 'Gembox::Gems' do
       @gems = Gembox::Gems.local_gems
     end
 
-    should "return ActiveSupport::OrderedHash of gems" do
-      @gems.should.be.an instance_of(ActiveSupport::OrderedHash)
+    should "return array of array of gems" do
+      @gems.should.be.an instance_of(Gembox::GemList)
     end
 
     should "only have one entry per gem" do
@@ -32,7 +32,7 @@ describe 'Gembox::Gems' do
     end
 
     should "have an array of spec versions per gem name" do
-      @gems['sinatra'].should.be.an instance_of(Array)
+      @gems['sinatra'].should.be.an instance_of(Gembox::GemList)
       @gems['sinatra'].first.should.be.an instance_of(Gem::Specification)
     end
   end
@@ -43,8 +43,8 @@ describe 'Gembox::Gems' do
       @gems = Gembox::Gems.search 'sin'
     end
     
-    should "return a hash of gem specs" do
-      @gems.should.be.an instance_of(ActiveSupport::OrderedHash)
+    should "return a list of gem specs" do
+      @gems.should.be.an instance_of(Gembox::GemList)
     end
     
     should "only have one entry per gem" do

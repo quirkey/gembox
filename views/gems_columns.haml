@@ -1,5 +1,5 @@
 #gems
-  -@gems.to_a.in_groups_of(@gems.length / 2).each do |gems|
+  -@gems.in_groups_of((@gems.length + 1)/ 2).each do |gems|
     .column
       -gems.compact.each do |gem_name, specs|
         .gem

@@ -1,5 +1,6 @@
 require 'rubygems'
 require 'sinatra'
+
 require File.join(File.dirname(__FILE__), 'lib', 'gembox')
 
 Gembox::Gems.load
@@ -27,6 +28,7 @@ set :views,  'views'
 
 before do
   @gems = Gembox::Gems.local_gems
+  @stats = Gembox::Gems.stats
 end
 
 get '/stylesheets/:stylesheet.css' do
@@ -37,17 +39,19 @@ get '/' do
   haml :index
 end
 
+get %r{/gems/([\w\-\_]+)/?([\d\.]+)?/?} do
+  show_layout = params[:layout] != 'false'
+  name, version = params[:captures]
+  @gems = Gembox::Gems.search(name, version)
+  raise Sinatra::NotFound if @gems.empty?
+  @gem_versions = @gems.shift[1]
+  @gem = @gem_versions.shift
+  haml :gem, :layout => show_layout
+end
+
 get '/gems/?' do
   show_layout = params[:layout] != 'false'
   show_as = params[:as] || 'columns'
   haml "gems_#{show_as}".to_sym, :layout => show_layout
 end
 
-get '/gems/:name/?' do
-  show_layout = params[:layout] != 'false'
-  @gems = Gembox::Gems.search(params[:name])
-  not_found if @gems.empty?
-  @gem_versions = @gems.shift[1]
-  @gem = @gem_versions.shift
-  haml :gem, :layout => show_layout
-end
