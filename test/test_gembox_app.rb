@@ -95,27 +95,15 @@ describe "Gembox App" do
     before do
       get '/gems/sinatra'
     end
-
-    should "display only specific gem" do
-      body.should.not have_element('.gem', /rack/)
-    end
-
-    should "display link to gems website" do
-      body.should have_element('a', 'http://sinatra.rubyforge.org')
-    end
-
-    should "load gem spec for latest version" do
-      body.should have_element('.version', '0.9.0.5')
-    end
-
-    should "display links to all versions" do
-      body.should have_element('.other_versions a[href="/gems/sinatra/0.9.0.2"]')
+    
+    should "redirect to most recent version" do
+      status.should.be 302
     end
   end
 
   describe 'getting gems/name/version' do
     before do
-      get '/gems/sinatra/0.9.0.2'
+      get '/gems/sinatra/0.9.0.4'
     end
 
     should "display only specific gem" do
@@ -127,11 +115,11 @@ describe "Gembox App" do
     end
 
     should "load gem spec specified version" do
-      body.should have_element('.version', '0.9.0.2')
+      body.should have_element('.version', '0.9.0.4')
     end
 
     should "display links to all versions" do
-      body.should have_element('.other_versions a[href="/gems/sinatra/0.9.0.5"]')
+      body.should have_element('.other_versions a[href="/gems/sinatra/"]')
     end
   end
 

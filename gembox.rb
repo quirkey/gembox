@@ -42,10 +42,17 @@ end
 get %r{/gems/([\w\-\_]+)/?([\d\.]+)?/?} do
   show_layout = params[:layout] != 'false'
   name, version = params[:captures]
-  @gems = Gembox::Gems.search(name, version)
+  @gems = Gembox::Gems.search(name)
   raise Sinatra::NotFound if @gems.empty?
-  @gem_versions = @gems.shift[1]
-  @gem = @gem_versions.shift
+  @gem_versions = @gems[0][1]
+  if version
+    @gems = Gembox::Gems.search(name, version)
+    @gem  = @gems.shift[1].first if @gems
+  end
+  if !@gem
+    @gem = @gem_versions.shift
+    redirect "/gems/#{@gem.name}/#{@gem.version}"
+  end
   haml :gem, :layout => show_layout
 end
 

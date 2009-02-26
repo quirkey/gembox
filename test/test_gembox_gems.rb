@@ -32,7 +32,7 @@ describe 'Gembox::Gems' do
     end
 
     should "have an array of spec versions per gem name" do
-      @gems['sinatra'].should.be.an instance_of(Gembox::GemList)
+      @gems['sinatra'].should.be.an instance_of(Array)
       @gems['sinatra'].first.should.be.an instance_of(Gem::Specification)
     end
   end

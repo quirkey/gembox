@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'sinatra'
 require 'sinatra/test/bacon'
+require 'mocha'
 
 require File.join(File.dirname(__FILE__), '..', 'gembox.rb')
 
