@@ -44,6 +44,10 @@ module TestHelper
       end
     end
   end
+  
+  def html_body
+    body =~ /^\<html/ ? body : "<html><body>#{body}</body></html>"
+  end
 
 
 end

@@ -42,4 +42,3 @@
       -@gem.files_tree.each do |dir, files|
         =haml(:file_tree, :locals => {:dir => dir, :files => files, :parent => dir}, :layout => false)
         
-/ %pre=@gem.to_yaml

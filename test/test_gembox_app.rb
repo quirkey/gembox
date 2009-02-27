@@ -1,10 +1,21 @@
 require File.join(File.dirname(__FILE__), 'test_helper')
 
 describe "Gembox App" do
-
-  describe 'getting /' do
+  
+  describe 'getting index' do
     before do
       get '/'
+    end
+    
+    should "redirect to /gems" do
+      should.be.redirect
+    end
+    
+  end
+
+  describe 'getting gems' do
+    before do
+      get '/gems'
     end
 
     should 'load the index' do  
@@ -12,11 +23,11 @@ describe "Gembox App" do
     end
 
     should "display gem list" do
-      body.should have_element('#gems')
+      body.should have_element('div#gems')
     end
 
     should "display list of installed gems" do
-      body.should have_element('.gem', /sinatra/)
+      body.should have_element('.gem')
     end
 
     should "display as 4 columns" do
@@ -38,11 +49,11 @@ describe "Gembox App" do
     end
 
     should "display gem list" do
-      body.should have_element('#gems')
+      html_body.should have_element('#gems')
     end
 
     should "display as 4 columns" do
-      body.should have_element('.column')
+      html_body.should have_element('.column')
     end
   end
 
@@ -81,13 +92,9 @@ describe "Gembox App" do
       body.should.not have_element('html')
     end
 
-    should "display gem list" do
-      body.should have_element('#gems')
-    end
-
     should "display as table" do
-      body.should have_element('table#gems')
-      body.should have_element('table#gems tr.gem')
+      html_body.should have_element('table#gems')
+      html_body.should have_element('table#gems tr.gem')
     end
   end
 
@@ -106,8 +113,8 @@ describe "Gembox App" do
       get '/gems/sinatra/0.9.0.4'
     end
 
-    should "display only specific gem" do
-      body.should.not have_element('.gem', /rack/)
+    should "display dependencies" do
+      body.should have_element('#dependencies .gem', /rack/)
     end
 
     should "display link to gems website" do
@@ -119,7 +126,7 @@ describe "Gembox App" do
     end
 
     should "display links to all versions" do
-      body.should have_element('.other_versions a[href="/gems/sinatra/"]')
+      body.should have_element('#versions a')
     end
   end
 
