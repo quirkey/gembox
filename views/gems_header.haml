@@ -1,0 +1,10 @@
+%h2 
+  = @search || 'Installed Gems'
+  %span.view_options
+    View as
+    =link_to('Columns', {'as' => 'columns'})
+    =' / '
+    =link_to('Table', {'as' => 'table'})
+    | 
+    =link_to('Summaries', {'summaries' => 'false'})
+    

@@ -1,0 +1,16 @@
+=haml(:gems_header, :layout => false)
+%table#gems
+  %thead
+    %th Name
+    %th Versions
+    %th Homepage
+  %tbody
+    -@gems.each do |gem_name, specs|
+      %tr.gem
+        %td.name=link_to_gem(specs.first)
+        %td.versions=specs.collect {|spec| link_to_gem(spec, :text => spec.version) }.join(', ')
+        %td=link_to(specs.first.homepage)
+      %tr.gem.summary
+        %td/
+        %td.description{:colspan => 2}=specs.first.summary
+        

@@ -97,7 +97,7 @@ describe "Gembox App" do
     end
     
     should "redirect to most recent version" do
-      status.should.be 302
+      status.should.be.equal 302
     end
   end
 

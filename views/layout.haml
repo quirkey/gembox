@@ -10,7 +10,7 @@
       #header
         .contained
           %img{:src => '/images/rubygems-125x125t.png', :alt => 'Rubygems logo', :id => 'logo'}
-          %h1 Gembox
+          %h1=link_to('Gembox', '/')
       #nav
         .contained
           .stats
@@ -20,21 +20,16 @@
               versions of
               =@stats[:num_gems]
               gems.
-            %p
               Your oldest gem is
-              =@stats[:oldest_gem].name
+              =link_to_gem(@stats[:oldest_gem])
               from
-              =@stats[:oldest_gem].date
+              =ts(@stats[:oldest_gem].date)
             
           .search
             %form{:method => 'get', :action => '/gems'}
               %input{:type => 'text', :name => 'search'}
               %input{:type => 'submit', :value => 'Search'}
-          .view_options
-            View as
-            =link_to('Columns', {:as => 'columns'})
-            =' / '
-            =link_to('Table', {:as => 'table'})
+          
       #main.contained
         =yield
       #footer

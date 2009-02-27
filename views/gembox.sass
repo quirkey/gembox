@@ -18,6 +18,9 @@ a:hover
   :color = !light_red
   :text-decoration underline
 
+a img 
+  :border none
+  
 .contained
   :width 960px
   :margin 0px auto
@@ -35,6 +38,10 @@ a:hover
     :color = !dark_red
     :font-size 50px
     :margin 20px 0px 0px 0px
+    a
+      :color = !dark_red
+    a:hover
+      :text-decoration none
 
 #nav
   :background = !dark_red
@@ -43,20 +50,72 @@ a:hover
     
     
 #main
+  h2
+    :position relative
+    
+    span.view_options
+      :font-size 14px
+      :font-weight normal
+      :color = !grey
+      :position absolute
+      :top 5px
+      :right 20px
   .column
     :width 460px
     :float left
-    .gem
-      :font-size 14px
-      :margin 5px 0px
-      :padding 5px 0px
-      h4
-        :font-size 16px
-        :margin 0px
-        :padding 0px 0px 5px 0px
-      .versions a
+  .gem
+    :font-size 14px
+    :margin 5px 0px
+    :padding 5px 0px
+    .name
+      :font-size 16px
+      :margin 0px
+      :padding 0px 0px 2px 0px
+    .description
+      :font-size 12px
+      :padding 2px 0px
+      :color #999
+    .versions
+      :color = !light_grey
+      a
         :color = !grey
-
+  table#gems
+    :border-collapse collapse
+    :font-size 14px
+    :width 100%
+    th
+      :color = !grey
+      :text-align left
+      :font-size 12px
+      :font-weight normal
+      :border-bottom 1px solid #CCC
+    td
+      :padding 4px 4px 4px 0px
+      :vertical-align top
+    tr.summary td
+      :padding-top 0px 
+      
+#gem
+  .description
+    :font-size 18px
+    :color = #333
+  .meta
+    :color = !grey
+  ul.files,
+  ul.files li ul
+    :list-style none
+    :font-size 14px
+    :font-weight normal
+    :margin 0px
+    :padding 4px 0px 0px
+  ul.files 
+    li
+      :padding 4px 0px
+    li ul li
+      :padding-left 10px
+    img
+      :vertical-align top
+      
 #footer
   :margin 20px
   :padding 10px

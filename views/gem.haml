@@ -5,17 +5,41 @@
   
   .description
     %p=@gem.description
+  .meta
     %p.authors
       By 
       =@gem.authors.join(', ')
       ='(' + link_to(@gem.email, "mailto:#{@gem.email}") + ')'
-    %p.url=link_to(@gem.homepage)
-  .dependencies
-    %h3 Dependencies
+    %p.url
+      Homepage: 
+      =link_to(@gem.homepage)
+    -unless @gem.rubyforge_project.blank?
+      %p.url
+        Rubyforge:
+        =link_to("http://rubyforge.org/projects/#{@gem.rubyforge_project}")
+    %p.released 
+      Released
+      =ts(@gem.date)
+  %h3.toggler Dependencies
+  #dependencies.toggle_area
     -@gem.dependencies.each do |dependency|
       .gem
         =link_to(dependency.name, "/gems/#{dependency.name}")
         %span.version=dependency.version_requirements
-    
-
-%pre=@gem.to_yaml
+  %h3.toggler Other Versions
+  #versions.toggle_area
+    %table
+      %tbody
+        -@gem_versions.each do |spec|
+          %tr
+            %td=link_to(spec.version, "/gems/#{spec.name}/#{spec.version}")
+            %td=ts(spec.date)
+        
+  %h3.toggler Files
+  #files.toggle_area
+    %ul.files
+      =haml(:file_tree, :locals => {:dir => '/', :files => {}, :parent => ''}, :layout => false)
+      -@gem.files_tree.each do |dir, files|
+        =haml(:file_tree, :locals => {:dir => dir, :files => files, :parent => dir}, :layout => false)
+        
+/ %pre=@gem.to_yaml
