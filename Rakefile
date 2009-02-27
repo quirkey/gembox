@@ -1,6 +1,21 @@
 %w[rubygems rake rake/clean fileutils newgem rubigen].each { |f| require f }
 require File.dirname(__FILE__) + '/lib/gembox'
 
+begin
+  require 'jeweler'
+  Jeweler::Tasks.new do |s|
+    s.name = "the-perfect-gem"
+    s.summary = "TODO"
+    s.email = "josh@technicalpickles.com"
+    s.homepage = "http://github.com/technicalpickles/the-perfect-gem"
+    s.description = "TODO"
+    s.authors = ["Josh Nichols"]
+  end
+rescue LoadError
+  puts "Jeweler not available. Install it with: sudo gem install technicalpickles-jeweler -s http://gems.github.com"
+end
+
+
 # Generate all the Rake tasks
 # Run 'rake -T' to see list of generated tasks (from gem root directory)
 $hoe = Hoe.new('gembox', Gembox::VERSION) do |p|
@@ -23,6 +38,3 @@ end
 
 require 'newgem/tasks' # load /tasks/*.rake
 Dir['tasks/**/*.rake'].each { |t| load t }
-
-# TODO - want other tests/tasks run by default? Add them to the list
-# task :default => [:spec, :features]

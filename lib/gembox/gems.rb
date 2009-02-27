@@ -14,7 +14,7 @@ module Gembox
       
       def search(search_term, version = nil)
         version = version ? Gem::Requirement.create(version) : Gem::Requirement.default
-        gems = source_index.search Gem::Dependency.new(/^#{Regexp.escape(search_term)}/, version)
+        gems = source_index.search Gem::Dependency.new(/#{Regexp.escape(search_term)}/, version)
         group_gems(gems)
       end
       
