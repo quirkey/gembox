@@ -3,11 +3,13 @@ Manifest.txt
 PostInstall.txt
 README.rdoc
 Rakefile
+bin/gembox
 config.ru
-config.yml
 gembox.rb
 lib/extensions.rb
 lib/gembox.rb
+lib/gembox/cli.rb
+lib/gembox_.rb
 public/images/edit.png
 public/images/folder.png
 public/images/git.gif
@@ -25,6 +27,7 @@ script/destroy
 script/generate
 test/test_gembox.rb
 test/test_gembox_app.rb
+test/test_gembox_cli.rb
 test/test_gembox_gems.rb
 test/test_helper.rb
 views/file_tree.haml
