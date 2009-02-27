@@ -1,10 +1,16 @@
 %h2 
-  = @search || 'Installed Gems'
+  -if @search 
+    Gems matching
+    %em=@search 
+    %span.num="(#{@gems.length})"
+  -else
+    Installed Gems
+    %span.num="(#{@gems.total_entries})"
   %span.view_options
     View as
-    =link_to('Columns', {'as' => 'columns'})
+    =(@show_as == 'columns') ? '<strong>Columns</strong>' : link_to('Columns', {'as' => 'columns'})
     =' / '
-    =link_to('Table', {'as' => 'table'})
+    =(@show_as == 'table') ? '<strong>Table</strong>' : link_to('Table', {'as' => 'table'})
     | 
     =link_to('Summaries', {'summaries' => 'false'})
 

@@ -1,13 +1,16 @@
 =haml(:gems_header, :layout => false)
-#gems
-  -@gems.in_groups_of((@gems.length + 1)/ 2).each do |gems|
-    .column
-      -gems.compact.each do |gem_name, specs|
-        .gem
-          %h4.name=link_to_gem(specs.first)
-          .description=specs.first.summary
-          .versions
-            %span 
-              =specs.collect {|spec| link_to_gem(spec, :text => spec.version) }.join(', ')
-  .clear
-=will_paginate(@gems)
+- unless @gems.empty?
+  #gems
+    -@gems.in_groups_of((@gems.length + 1)/ 2).each do |gems|
+      .column
+        -gems.compact.each do |gem_name, specs|
+          .gem
+            %h4.name=link_to_gem(specs.first)
+            .description=specs.first.summary
+            .versions
+              %span 
+                =specs.collect {|spec| link_to_gem(spec, :text => spec.version) }.join(', ')
+    .clear
+  =will_paginate(@gems)
+- else
+  =haml(:no_results, :layout => false)

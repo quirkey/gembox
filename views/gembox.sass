@@ -4,11 +4,11 @@
 !light_grey = #CCCCCC
 !light_grey_bg = #EFEFEF
 !grey = #666
-
+!fonts = "'Franklin Gothic', 'Franklin Gothic Medium', Helvetica, sans-serif"
 //
 
 body
-  :font-family 'Franklin Gothic', 'Franklin Gothic Medium', Helvetica, sans-serif
+  :font-family = !fonts
   :background #FFFFFF
   :margin 0px
   :padding 0px
@@ -51,6 +51,16 @@ a img
   :background = !dark_red
   :padding 15px
   .search
+    :margin-top 20px
+    :width 100%
+    :text-align center
+    input
+      :font-family = !fonts
+      :font-size 18px
+      :padding 4px
+    .search_field
+      :width 400px
+      
 #stats
   :background = !light_grey_bg
   :margin 0px 0px 10px 0px
@@ -69,6 +79,11 @@ a img
       :position absolute
       :top 5px
       :right 20px
+      strong
+        :color #333
+        :font-weight normal
+    .num
+      :color = !light_grey
   .column
     :width 460px
     :float left

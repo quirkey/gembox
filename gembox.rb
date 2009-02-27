@@ -1,5 +1,6 @@
 require 'rubygems'
 require 'sinatra'
+require 'active_support'
 require 'will_paginate/array'
 require 'will_paginate/view_helpers'
 
@@ -122,6 +123,9 @@ end
 
 get '/gems/?' do
   show_layout = params[:layout] != 'false'
-  show_as = params[:as] || 'columns'
-  haml "gems_#{show_as}".to_sym, :layout => show_layout
+  @show_as = params[:as] || 'columns'
+  if @search = params[:search]
+    @gems = Gembox::Gems.search(@search).paginate :page => params[:page] 
+  end
+  haml "gems_#{@show_as}".to_sym, :layout => show_layout
 end

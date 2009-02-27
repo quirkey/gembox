@@ -15,7 +15,7 @@ module Gem
     end
     
     def on_github?
-      homepage =~ /github\.com/
+      homepage =~ /github\.com\/([\w\d\-\_]+)\/([\w\d\-\_]+)\/tree/
     end
   end
 end
