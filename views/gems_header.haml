@@ -11,7 +11,7 @@
     =(@show_as == 'columns') ? '<strong>Columns</strong>' : link_to('Columns', {'as' => 'columns'})
     =' / '
     =(@show_as == 'table') ? '<strong>Table</strong>' : link_to('Table', {'as' => 'table'})
-    | 
-    =link_to('Summaries', {'summaries' => 'false'})
+    / | 
+    /=link_to('Summaries', {'summaries' => 'false'})
 
 =will_paginate(@gems)
