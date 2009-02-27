@@ -13,23 +13,23 @@
           %h1=link_to('Gembox', '/')
       #nav
         .contained
-          .stats
-            %p
-              You have
-              =@stats[:num_versions]
-              versions of
-              =@stats[:num_gems]
-              gems.
-              Your oldest gem is
-              =link_to_gem(@stats[:oldest_gem])
-              from
-              =ts(@stats[:oldest_gem].date)
-            
           .search
             %form{:method => 'get', :action => '/gems'}
               %input{:type => 'text', :name => 'search'}
               %input{:type => 'submit', :value => 'Search'}
-          
+      #stats
+        .contained
+          %p
+            You have
+            =@stats[:num_versions]
+            versions of
+            =@stats[:num_gems]
+            gems.
+            Your oldest gem is
+            =link_to_gem(@stats[:oldest_gem])
+            from
+            =ts(@stats[:oldest_gem].date)
+        
       #main.contained
         =yield
       #footer

@@ -2,7 +2,11 @@
 !light_red = #EB9281
 !dark_red = #871D1A
 !light_grey = #CCCCCC
+!light_grey_bg = #EFEFEF
 !grey = #666
+
+//
+
 body
   :font-family 'Franklin Gothic', 'Franklin Gothic Medium', Helvetica, sans-serif
   :background #FFFFFF
@@ -29,7 +33,7 @@ a img
 
 #header
   .contained
-    :width 400px
+    :width 250px
   #logo
     :position absolute
     :top -20px
@@ -47,12 +51,17 @@ a img
   :background = !dark_red
   :padding 15px
   .search
-    
-    
+#stats
+  :background = !light_grey_bg
+  :margin 0px 0px 10px 0px
+  :padding 2px
+  p
+    :text-align center
+    :color = !grey
+  
 #main
   h2
     :position relative
-    
     span.view_options
       :font-size 14px
       :font-weight normal
@@ -115,7 +124,20 @@ a img
       :padding-left 10px
     img
       :vertical-align top
-      
+
+.pagination
+  :font-size 12px
+  :color = !grey
+  :width 100%
+  :background = !light_grey_bg
+  :padding 4px
+  :text-align right
+  a
+    :color = !dark_red
+  a, 
+  span
+    :padding 0px 4px
+  
 #footer
   :margin 20px
   :padding 10px

@@ -9,7 +9,8 @@ Gembox::Gems.load
 
 helpers do
   def tag_options(options, escape = true)
-    options.collect {|k,v| %{#{k}="#{v}"}}.join(' ')
+    option_string = options.collect {|k,v| %{#{k}="#{v}"}}.join(' ')
+    option_string = " " + option_string unless option_string.blank?
   end
   
   def content_tag(name, content, options, escape = true)
