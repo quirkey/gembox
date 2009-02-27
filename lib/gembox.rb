@@ -4,9 +4,9 @@ require File.join(File.dirname(__FILE__), 'extensions')
 module Gembox
   class GemList < Array
     
-    def [](key)
-      if key.is_a?(String)
-        search(key)
+    def [](*args)
+      if args.first.is_a?(String)
+        search(args.first)
       else
         super
       end

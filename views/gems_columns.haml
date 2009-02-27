@@ -10,3 +10,4 @@
             %span 
               =specs.collect {|spec| link_to_gem(spec, :text => spec.version) }.join(', ')
   .clear
+=will_paginate(@gems)

@@ -1,12 +1,23 @@
 require 'rubygems'
 require 'sinatra'
+require 'will_paginate/array'
+require 'will_paginate/view_helpers'
 
 require File.join(File.dirname(__FILE__), 'lib', 'gembox')
 
 Gembox::Gems.load
 
 helpers do
-  def link_to(text, link = nil)         
+  def tag_options(options, escape = true)
+    options.collect {|k,v| %{#{k}="#{v}"}}.join(' ')
+  end
+  
+  def content_tag(name, content, options, escape = true)
+    tag_options = tag_options(options, escape) if options
+    "<#{name}#{tag_options}>#{content}</#{name}>"
+  end
+  
+  def link_to(text, link = nil, options = {})         
     link ||= text
     link = url_for(link)
     "<a href=\"#{link}\">#{text}</a>"
@@ -59,13 +70,15 @@ helpers do
       </object>
     EOF
   end
+  
+  include WillPaginate::ViewHelpers
 end
 
 set :public, 'public'
 set :views,  'views'
 
 before do
-  @gems = Gembox::Gems.local_gems
+  @gems = Gembox::Gems.local_gems.paginate :page => params[:page], :per_page => 30
   @stats = Gembox::Gems.stats
 end
 
@@ -94,12 +107,13 @@ get %r{/gems/([\w\-\_]+)/?([\d\.]+)?/?} do
   if params[:file]
     action = params[:action] || view
     file_path = File.join(@gem.full_gem_path, params[:file])
-    if action == 'edit'
-      `$EDITOR #{file_path}`
-    else
-      headers['Content-type'] = 'text/plain'
-      File.read(file_path)
-      return
+    if File.readable?(file_path)
+      if action == 'edit'
+        `$EDITOR #{file_path}`
+      else
+        response.headers['Content-type'] = 'text/plain'
+        return File.read(file_path)
+      end
     end
   end
   haml :gem, :layout => show_layout
