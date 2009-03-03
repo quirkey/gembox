@@ -1,0 +1,116 @@
+---
+layout: quirkey_code
+title: static_model
+github_name: static_model
+current_version: 0.2.2
+nav:
+  - name: What
+    link: "#what"
+  - name: Why
+    link: "#why"
+  - name: Usage
+    link: "#usage"
+---
+
+h2(project_name). static_model
+
+h3(#what). What
+
+Static Model provides ActiveRecord like functionalities while reading from a simple YAML file. 
+
+h3(#why). Why
+
+There are sometimes when you need records that are completely immutable or need to travel very easily with your app. One of the problems with storing all your data in a database is that you can't really make assumptions about certain records existing. StaticModel provides a very easy way to create models that act just like ActiveRecord, but are reading off of static YAML files that can exist in your app/repository.
+
+h3(#usage). Usage
+
+StaticModel is a gem and can be used in any Ruby project, but it was designed around being used in Rails. The instructions that follow are Rails specific, but to use it in any Ruby app would not be much different.
+
+The first thing to do is set up your model. In app/models/ create a model just like you would with an AR model. For example, lets create a Book model:
+
+{% highlight ruby %}
+# app/models/book.rb
+class Book < StaticModel::Base
+
+end
+{% endhighlight %}
+
+StaticModels descend from StaticModel::Base. Without any config, this model makes some assumptions. It assumes you have a YAML file in config/data/TABLE_NAME.yml. The table name is assumed to be the lower-cased plural of the model name (just like Rails DB tables). For example, for our Book model, we would have a YAML file config/data/books.yml. If you want the file living somewhere else, or names something completely different, just use the macro: set_data_file
+
+{% highlight ruby %}
+class Book < StaticModel::Base
+  set_data_file '/path/to/my/file/withanothername.yml'
+end
+{% endhighlight %}
+
+The format of the YAML file is very simple. StaticModel just expects an array of YAML hashses. The only requirement is that each of these hashes has an 'id' with a unique integer.
+
+For example, heres our books.yml
+
+{% highlight yaml %}
+---
+- id: 1
+  title: The Ruby Way
+  author: Hal Fulton
+- id: 2
+  title: Programming Ruby
+  author: Dave Thomas
+  publisher: Pragmatic Programmers
+{% endhighlight %}
+
+With this set up, we can now query our data using almost identical methods to AR.
+
+{% highlight ruby %}
+>> Book.find(1)
+=> #<Book:0x1706fd8 @attributes={:author=>"Hal Fulton", :title=>"The Ruby Way"}, id1
+
+>> Book.first
+=> #<Book:0x1706fd8 @attributes={:author=>"Hal Fulton", :title=>"The Ruby Way"}, id1
+
+>> Book.find(:all) (or Book.all)
+=> [#<Book:0x1706fd8 @attributes={:author=>"Hal Fulton", :title=>"The Ruby Way"}, id1, 
+  #<Book:0x1706fc4 @attributes={:author=>"Dave Thomas", :title=>"Programming Ruby", :publisher=>"Pragmatic Programmers"}, id2]
+
+>> Book.find_by_title('The Ruby Way')
+=> #<Book:0x1706fd8 @attributes={:author=>"Hal Fulton", :title=>"The Ruby Way"}, id1
+
+>> b = Book.first
+>> b.title
+=> "The Ruby Way"
+>> b.id
+=> 1
+{% endhighlight %}
+
+Theres also some primitive association support (more coming): Currently StaticModel supports has_many and belongs_to. This can work between StaticModels or between a StaticModel and an ActiveRecord model. 
+
+Lets say our Books have many Readers. Book is our StaticModel, but a Reader is an ActiveRecord model.
+
+{% highlight ruby %}
+class Reader < ActiveRecord::Base
+  belongs_to :book, :foreign_key => 'book_id'
+end
+{% endhighlight %}
+
+This means that the readers table in our DB has a book_id column that refers to the IDs we used in our books.yml. 
+
+{% highlight ruby %}
+>> r = Reader.create(:name => 'Aaron Quint', :book_id => 1)
+=> #<Reader>
+>> r.book
+=> #<Book:0x1706fd8 @attributes={:author=>"Hal Fulton", :title=>"The Ruby Way"}, id1
+{% endhighlight %}
+
+This also works the other way around.
+
+{% highlight ruby %}
+class Book < StaticModel::Base
+  has_many :readers
+end
+{% endhighlight %}
+
+has_many in StaticModel uses scoped if available. This means that you can use the power of chained scope associations and minimize queries.
+
+{% highlight ruby %}
+>> Book.first.readers # Fires off a single query
+>> Book.first.readers.find(:all, :conditions => ['created_at < ?', 1.day.ago]) # Still only 1 query
+{% endhighlight %}
