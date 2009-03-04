@@ -11,6 +11,7 @@ Jeweler::Tasks.new do |s|
   s.authors = ["Aaron Quint"]
   s.files = File.read('Manifest.txt').split("\n")
   s.add_dependency 'sinatra', '>=0.9.1'
+  s.add_dependency 'haml', '>=2.0.9'
   s.add_dependency 'activesupport', '>=2.2.2' 
   s.add_dependency 'mislav-will_paginate', '>=2.3.7'
 end
