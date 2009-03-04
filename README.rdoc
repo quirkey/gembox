@@ -1,32 +1,19 @@
 = gembox
 
-* FIX (url)
-
 == DESCRIPTION:
 
-FIX (describe your package)
+Gembox is a little sinatra app that ties in with your local ruby gems to let you browse and learn more about them.
 
-== FEATURES/PROBLEMS:
+Please see the project home page for a full description:
 
-* FIX (list of features or problems)
+http://code.quirkey.com/gembox
 
-== SYNOPSIS:
-
-  FIX (code sample of usage)
-
-== REQUIREMENTS:
-
-* FIX (list of requirements)
-
-== INSTALL:
-
-* FIX (sudo gem install, anything else)
 
 == LICENSE:
 
 (The MIT License)
 
-Copyright (c) 2009 FIXME full name
+Copyright (c) 2009 Aaron Quint, Quirkey NYC, LLC
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
