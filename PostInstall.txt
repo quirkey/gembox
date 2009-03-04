@@ -1,7 +1,4 @@
+For more information on gembox, see http://code.quirkey.com/gembox
 
-For more information on gembox, see http://gembox.rubyforge.org
-
-NOTE: Change this information in PostInstall.txt 
-You can also delete it if you don't want it.
 
 

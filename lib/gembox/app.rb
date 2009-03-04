@@ -4,10 +4,11 @@ module Gembox
   class App < ::Sinatra::Default
     include Gembox::ViewHelpers  
     include WillPaginate::ViewHelpers
+      
+    @@root = File.expand_path(File.join(File.dirname(__FILE__), '..', '..'))
     
-
-    set :public, 'public'
-    set :views,  'views'
+    set :public, File.join(@@root,'public')
+    set :views,  File.join(@@root,'views')
 
     before do
       Gembox::Gems.load
