@@ -10,6 +10,7 @@ Jeweler::Tasks.new do |s|
   s.description = "A sinatra based interface for browsing and admiring your gems"
   s.authors = ["Aaron Quint"]
   s.add_dependency 'rubygems', '>=1.3.1'
+  s.add_dependency 'sinatra', '>=0.9.1'
   s.add_dependency 'activesupport', '>=2.2.2' 
   s.add_dependency 'mislav-will_paginate', '>=2.3.7'
 end
