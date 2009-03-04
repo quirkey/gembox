@@ -37,7 +37,7 @@ $ gembox
 
 If all goes well, this will start gembox at:
 
-"http://localhost:5678":
+"http://localhost:5678":http://localhost:5678
 
 At this point the features are pretty limited. You get:
 
@@ -57,7 +57,9 @@ Some features that I'd like to do (or you can with a simple 'fork you'):
 * links to rdoc and auto rdoc generation
 * easy daemonizing + running on a named local host like: http://localgems
 
-Another enterprising soul has done the work of converting gem server to a sinatra app: "http://github.com/jnewland/sinatra-rubygems/tree/master":http://github.com/jnewland/sinatra-rubygems/tree/master
+Another enterprising soul has done the work of converting gem server to a sinatra app:
+
+"http://github.com/jnewland/sinatra-rubygems/tree/master":http://github.com/jnewland/sinatra-rubygems/tree/master
 
 <div class="warning">
   <p>PLEASE PLEASE PLEASE do not run this on a public web-server right now. It currently contains some SUPER unsafe code (aka funning arbitrary code off the filesystem)</p>
