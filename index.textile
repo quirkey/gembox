@@ -2,7 +2,7 @@
 layout: quirkey_code
 title: gembox
 github_name: gembox
-current_version: 0.1.1
+current_version: 0.1.2
 nav:
   - name: What
     link: "#what"
