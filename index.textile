@@ -62,7 +62,7 @@ Another enterprising soul has done the work of converting gem server to a sinatr
 "http://github.com/jnewland/sinatra-rubygems/tree/master":http://github.com/jnewland/sinatra-rubygems/tree/master
 
 <div class="warning">
-  <p>PLEASE PLEASE PLEASE do not run this on a public web-server right now. It currently contains some SUPER unsafe code (aka funning arbitrary code off the filesystem)</p>
+  <p>PLEASE PLEASE PLEASE do not run this on a public web-server right now. It currently contains some SUPER unsafe code (aka running arbitrary code off the filesystem)</p>
 </div>
 
 h3(#dependencies). Dependencies
