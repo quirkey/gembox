@@ -1,12 +1,9 @@
 -subdirs = (files && !files.empty?)
-%li
+%li.dir
   %img{'src' => "/images/#{(subdirs ? 'folder.png' : 'page.png')}"}
-  =dir
-  =link_to('<img src="/images/edit.png" alt="Edit"/>', url_for(:file => parent, :action => 'edit'))
-  =link_to('<img src="/images/page_white_text.png" alt="View Raw"/>', url_for(:file => parent, :action => 'view')) unless subdirs
-  =link_to('<img src="/images/git.gif" alt="On Github"/>', "#{@gem.homepage}/blob/master/#{parent}") if @gem.on_github?
-  =clippy(File.join(@gem.full_gem_path, parent))
+  %span.file{'data' => "{subdirs: #{!!subdirs}, filename:\'#{parent}\', url: \'#{url_for(:file => parent)}\', github: #{@gem.on_github? ? "\'" + @gem.homepage + "/blob/master/#{parent}\'" : false}}"}
+    =dir
   -if subdirs
-    %ul
+    %ul{'style' => 'display:none'}
       -files.each do |dir, files|
         =haml(:file_tree, :locals => {:dir => dir, :files => files, :parent => File.join(parent, dir)}, :layout => false)
