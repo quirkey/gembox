@@ -43,11 +43,11 @@
             // build controls
             var $controls = $('<span class="controls"></span>');
             $('<a><img src="/images/edit.png" alt="Edit"/></a>')
-            .attr('href', meta.url + '/edit')
+            .attr('href', meta.url + '&action=edit')
             .appendTo($controls);
             if (!meta.subdirs) {
               $('<a><img src="/images/page_white_text.png" alt="View Raw"/></a>')
-              .attr('href', meta.url + '/view')
+              .attr('href', meta.url + '&action=view')
               .appendTo($controls);
             }
             if (meta.github) {
