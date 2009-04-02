@@ -6,7 +6,7 @@ module Gembox
     include WillPaginate::ViewHelpers
       
     @@root = File.expand_path(File.join(File.dirname(__FILE__), '..', '..'))
-    
+        
     set :public, File.join(@@root,'public')
     set :views,  File.join(@@root,'views')
 
@@ -23,23 +23,26 @@ module Gembox
     get '/' do
       redirect '/gems'
     end
-
+    
+    get %r{/gems/doc/([\w\-\_]+)/?([\d\.]+)?/?(.*)?} do
+      if params[:captures].length == 3
+        # we have a path
+        @path = params[:captures].pop
+        load_gem_by_version
+        @rdoc_path = File.join(@gem.installation_path, "doc", @gem.full_name, 'rdoc')
+        File.open(File.join(@rdoc_path, @path))
+      else
+        load_gem_by_version
+        @rdoc_path = File.join(@gem.installation_path, "doc", @gem.full_name, 'rdoc')        
+        haml :doc, :layout => false
+      end
+    end
+    
     get %r{/gems/([\w\-\_]+)/?([\d\.]+)?/?} do
       show_layout = params[:layout] != 'false'
-      name, version = params[:captures]
-      @gems = Gembox::Gems.search(name)
-      raise Sinatra::NotFound if @gems.empty?
-      @gem_versions = @gems[0][1]
-      if version
-        @gems = Gembox::Gems.search(name, version)
-        @gem  = @gems.shift[1].first if @gems
-      end
-      if !@gem
-        @gem = @gem_versions.shift
-        redirect "/gems/#{@gem.name}/#{@gem.version}"
-      end
+      load_gem_by_version
       if params[:file]
-        action = params[:action] || view
+        action = params[:action] || 'view'
         file_path = File.join(@gem.full_gem_path, params[:file])
         if File.readable?(file_path)
           if action == 'edit'
@@ -52,7 +55,7 @@ module Gembox
       end
       haml :gem, :layout => show_layout
     end
-
+        
     get '/gems/?' do
       show_layout = params[:layout] != 'false'
       @show_as = params[:as] || 'columns'
@@ -61,6 +64,24 @@ module Gembox
       end
       haml "gems_#{@show_as}".to_sym, :layout => show_layout
     end
+   
+    private
+    
+    def load_gem_by_version
+      name, version = params[:captures]
+      @gems = Gembox::Gems.search(name)
+      raise @gems.inspect if @gems.empty?
+      @gem_versions = @gems[0][1]
+      if version
+        @gems = Gembox::Gems.search(name, version)
+        @gem  = @gems.shift[1].first if @gems
+      end
+      if !@gem
+        @gem = @gem_versions.shift
+        redirect "/gems/#{@gem.name}/#{@gem.version}"
+      end
+    end
+    
     
   end
 end

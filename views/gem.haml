@@ -13,6 +13,9 @@
     %p.url
       Homepage: 
       =link_to(@gem.homepage)
+    -if @gem.has_rdoc?
+      %p.url 
+        =link_to("Open RDoc", "/gems/doc/#{@gem.name}/#{@gem.version}")
     -unless @gem.rubyforge_project.blank?
       %p.url
         Rubyforge:
