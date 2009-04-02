@@ -6,11 +6,12 @@
     -['jquery', 'jquery.ui', 'jquery.metadata', 'jquery.form', 'base', 'gembox'].each do |jslib|
       %script{'type' => 'text/javascript', 'src' => "/javascripts/#{jslib}.js"}
   %body
-    #smallnav
-      .back_link=link_to_gem(@gem, :text => '&laquo Back to Gembox')
-      .viewing
-        Viewing RDoc for 
-        =@gem.name
-        &nbsp;
-        =@gem.version
-    %iframe#docframe{:width => '100%', :height => '100%', :src => "#{request.path_info}/index.html"}
+    #container
+      #smallnav
+        .back_link=link_to_gem(@gem, :text => '&laquo Back to Gembox')
+        .viewing
+          Viewing RDoc for 
+          =@gem.name
+          &nbsp;
+          =@gem.version
+      %iframe#docframe{:src => "#{request.path_info}/index.html"}
