@@ -27,10 +27,11 @@ module Gembox
     get %r{/gems/doc/([\w\-\_]+)/?([\d\.]+)?/?(.*)?} do
       if params[:captures].length == 3 && !params[:captures][2].blank? 
         # we have a path
-        @path = params[:captures].pop
         load_gem_by_version
         @rdoc_path = File.join(@gem.installation_path, "doc", @gem.full_name, 'rdoc')
-        File.read(File.join(@rdoc_path, @path))
+        full_path = File.join(@rdoc_path, params[:captures].pop)
+        content_type File.extname(full_path)
+        File.read(full_path)
       else
         load_gem_by_version
         @rdoc_path = File.join(@gem.installation_path, "doc", @gem.full_name, 'rdoc')        
@@ -48,7 +49,7 @@ module Gembox
           if action == 'edit'
             `$EDITOR #{file_path}`
           else
-            response.headers['Content-type'] = 'text/plain'
+            content_type 'text/plain'
             return File.read(file_path)
           end
         end
