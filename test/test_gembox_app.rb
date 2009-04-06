@@ -59,7 +59,7 @@ describe "Gembox App" do
 
   describe 'getting gems/ with a simple search' do
     before do
-      get '/gems/?search=s'
+      get '/gems/?search=sin'
     end
 
     should "load" do
@@ -104,7 +104,7 @@ describe "Gembox App" do
     end
     
     should "redirect to most recent version" do
-      status.should.be.equal 302
+      should.be.redirect
     end
   end
 

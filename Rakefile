@@ -19,6 +19,7 @@ end
 
 # Generate all the Rake tasks
 # Run 'rake -T' to see list of generated tasks (from gem root directory)
+
 # $hoe = Hoe.new('gembox', Jeweler::Version.new(File.expand_path(File.dirname(__FILE__))).to_s) do |p|
 #   p.developer('FIXME full name', 'FIXME email')
 #   p.changes              = p.paragraphs_of("History.txt", 0..1).join("\n\n")

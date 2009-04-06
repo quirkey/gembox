@@ -6,9 +6,10 @@ module Gembox
     include WillPaginate::ViewHelpers
       
     @@root = File.expand_path(File.join(File.dirname(__FILE__), '..', '..'))
-        
-    set :public, File.join(@@root,'public')
-    set :views,  File.join(@@root,'views')
+
+    set :root, @@root    
+    set :public, 'public'
+    set :views, 'views'
 
     before do
       Gembox::Gems.load

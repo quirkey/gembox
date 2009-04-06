@@ -1,14 +1,26 @@
 require 'rubygems'
 require 'sinatra'
-require 'sinatra/test/bacon'
+require 'bacon'
+require 'rack/test'
 require 'mocha'
 
-require File.join(File.dirname(__FILE__), '..', 'gembox.rb')
+require File.join(File.dirname(__FILE__), '..', 'lib', 'gembox.rb')
 
 require 'nokogiri'
 
-
 module TestHelper
+  
+  def app
+    Gembox::App.new
+  end
+  
+  def body
+    last_response.body
+  end
+  
+  def should
+    last_response.should
+  end
   
   def instance_of(klass)
     lambda {|obj| obj.is_a?(klass) }
@@ -53,4 +65,4 @@ module TestHelper
 end
 
 Bacon::Context.send(:include, TestHelper)
-
+Bacon::Context.send(:include, Rack::Test::Methods)
