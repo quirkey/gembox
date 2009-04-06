@@ -5,6 +5,7 @@
 
 require File.expand_path(File.dirname(__FILE__) + "/../lib/gembox")
 
-Gembox::App.set  :environment, :production
+Gembox::App.set :app_file, File.expand_path(File.dirname(__FILE__) + "/../lib/gembox/app.rb")
+Gembox::App.set :environment, :production
 Gembox::App.set :port, 5678
 Gembox::App.run!

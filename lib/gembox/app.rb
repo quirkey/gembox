@@ -7,9 +7,7 @@ module Gembox
       
     @@root = File.expand_path(File.join(File.dirname(__FILE__), '..', '..'))
 
-    set :root, @@root    
-    set :public, 'public'
-    set :views, 'views'
+    set :root,  @@root    
 
     before do
       Gembox::Gems.load
