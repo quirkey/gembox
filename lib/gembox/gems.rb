@@ -12,9 +12,11 @@ module Gembox
         @local_gems ||= group_gems(source_index.gems)
       end
       
-      def search(search_term, version = nil)
+      def search(search_term, version = nil, strict = false)
         version = version ? Gem::Requirement.create(version) : Gem::Requirement.default
-        gems = source_index.search Gem::Dependency.new(/#{Regexp.escape(search_term)}/, version)
+        escaped = Regexp.escape(search_term)
+        regexp = strict ? /^#{escaped}$/ : /#{escaped}/
+        gems = source_index.search Gem::Dependency.new(regexp, version)
         group_gems(gems)
       end
       

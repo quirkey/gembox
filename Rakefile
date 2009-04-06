@@ -12,7 +12,7 @@ $hoe = Hoe.new('gembox', Jeweler::Version.new(File.expand_path(File.dirname(__FI
   p.post_install_message = 'PostInstall.txt' # TODO remove if post-install message not required
   p.rubyforge_name       = 'quirkey'
   p.summary = p.description = "A sinatra based interface for browsing and admiring your gems."
-  p.homepage = 'http://code.quirkey.com/gembox'
+  p.url = ['http://code.quirkey.com/gembox', 'http://github.com/quirkey/gembox']
   p.extra_deps = [
    ['sinatra', '>=0.9.1'],
    ['haml', '>=2.0.9'],
