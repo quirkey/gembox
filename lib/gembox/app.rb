@@ -69,7 +69,7 @@ module Gembox
     
     def load_gem_by_version
       name, version = params[:captures]
-      @gems = Gembox::Gems.search(name)
+      @gems = Gembox::Gems.search(name, nil, true)
       raise @gems.inspect if @gems.empty?
       @gem_versions = @gems[0][1]
       if version
