@@ -2,7 +2,7 @@
 layout: quirkey_code
 title: gembox
 github_name: gembox
-current_version: 0.1.3
+current_version: 0.1.4
 nav:
   - name: What
     link: "#what"
@@ -70,6 +70,7 @@ h3(#dependencies). Dependencies
 Gembox requires:
 
 * rubygems >= 1.3.1
+* vegas >= 0.0.1
 * haml >= 2.0.9
 * sinatra >= 0.9.1
 * activesupport >= 2.2.2
