@@ -1,10 +1,8 @@
 History.txt
-Manifest.txt
 PostInstall.txt
 README.rdoc
 Rakefile
 bin/gembox
-gembox.gemspec
 lib/extensions.rb
 lib/gembox.rb
 lib/gembox/app.rb
