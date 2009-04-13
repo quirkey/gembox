@@ -6,6 +6,10 @@ require 'active_support'
 require 'will_paginate/array'
 require 'will_paginate/view_helpers'
 
+module Gembox
+  VERSION = '0.1.3'
+end
+
 require 'extensions'
 require 'gembox/gem_list'
 require 'gembox/gems'

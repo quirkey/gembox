@@ -8,7 +8,8 @@ module Gembox
     @@root = File.expand_path(File.join(File.dirname(__FILE__), '..', '..'))
 
     set :root,  @@root    
-
+    set :app_file, __FILE__
+    
     before do
       Gembox::Gems.load
       @gems = Gembox::Gems.local_gems.paginate :page => params[:page], :per_page => 30
@@ -63,6 +64,10 @@ module Gembox
         @gems = Gembox::Gems.search(@search).paginate :page => params[:page] 
       end
       haml "gems_#{@show_as}".to_sym, :layout => show_layout
+    end
+   
+    def self.version
+      Gembox::VERSION
     end
    
     private
