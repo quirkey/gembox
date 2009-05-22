@@ -12,7 +12,7 @@ $hoe = Hoe.new('gembox', Gembox::VERSION) do |p|
   p.summary = p.description = "A sinatra based interface for browsing and admiring your gems."
   p.url = ['http://code.quirkey.com/gembox', 'http://github.com/quirkey/gembox']
   p.extra_deps = [
-   ['sinatra', '>=0.9.1'],
+   ['sinatra', '>=0.9.2'],
    ['vegas', '>=0.0.1'],
    ['haml', '>=2.0.9'],
    ['activesupport', '>=2.2.2'],

@@ -1,3 +1,7 @@
+== 0.1.5 2009-05-22
+
+* Fixed the config.ru so gembox can run on passenger [Thanks Lenary]
+
 == 0.1.4 2009-04-13
 
 * Using the brand new release of Vegas for the binary

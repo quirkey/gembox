@@ -8,6 +8,28 @@ Please see the project home page for a full description:
 
 http://code.quirkey.com/gembox
 
+=== USAGE:
+
+==== BASIC:
+
+Install gembox:
+
+  sudo gem install gembox
+  
+On the command-line:
+  
+  $ gembox
+  
+And it should launch gembox in your browser.
+
+==== WITH PASSENGER:
+
+To use Gembox with Passenger Pane there are a few simple steps you need to do:
+
+ $ git clone git://github.com/quirkey/gembox.git
+ $ open ./gembox/
+
+Then open up Passenger Pane and drag the open Gembox folder into the list on the left (You'll have to be authenticated). Now browse to http://gembox.local/ and you'll see gembox! I told you it was simple.
 
 == LICENSE:
 
