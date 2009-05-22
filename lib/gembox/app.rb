@@ -9,11 +9,12 @@ module Gembox
 
     set :root,  @@root    
     set :app_file, __FILE__
-    
+        
     before do
       Gembox::Gems.load
-      @gems = Gembox::Gems.local_gems.paginate :page => params[:page], :per_page => 30
+      @gems  = Gembox::Gems.local_gems.paginate :page => params[:page], :per_page => 30
       @stats = Gembox::Gems.stats
+      @search ||= ''
     end
 
     get '/stylesheets/:stylesheet.css' do
@@ -46,7 +47,7 @@ module Gembox
         action = params[:action] || 'view'
         file_path = File.join(@gem.full_gem_path, params[:file])
         if File.readable?(file_path)
-          if action == 'edit'
+          if action == 'edit' && !production?
             `$EDITOR #{file_path}`
           else
             content_type 'text/plain'

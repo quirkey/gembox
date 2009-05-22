@@ -2,11 +2,11 @@ History.txt
 PostInstall.txt
 README.rdoc
 Rakefile
+config.ru
 bin/gembox
 lib/extensions.rb
 lib/gembox.rb
 lib/gembox/app.rb
-lib/gembox/config.ru
 lib/gembox/gem_list.rb
 lib/gembox/gems.rb
 lib/gembox/view_helpers.rb

@@ -41,3 +41,8 @@
         %p.copyright 
           Hey! I'm 
           =link_to 'open-source!', 'http://github.com/quirkey/gembox'
+
+      :erb
+        <script type="text/javascript" charset="utf-8">
+          jQuery('body').data('sinatra-env', '<%= options.environment %>');
+        </script>
