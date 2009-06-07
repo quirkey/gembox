@@ -25,10 +25,10 @@
             versions of
             =@stats[:num_gems]
             gems.
-            Your oldest gem is
-            =link_to_gem(@stats[:oldest_gem])
+            Your newest gem is
+            =link_to_gem(@stats[:newest_gem])
             from
-            =ts(@stats[:oldest_gem].date)
+            =ts(@stats[:newest_gem].date)
         
       #main.contained
         =yield
