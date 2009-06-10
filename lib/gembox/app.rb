@@ -15,6 +15,7 @@ module Gembox
       @gems  = Gembox::Gems.local_gems.paginate :page => params[:page], :per_page => 30
       @stats = Gembox::Gems.stats
       @search ||= ''
+      @environment = options.environment
     end
 
     get '/stylesheets/:stylesheet.css' do
