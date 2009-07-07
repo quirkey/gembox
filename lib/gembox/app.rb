@@ -27,16 +27,14 @@ module Gembox
     end
     
     get %r{/gems/doc/([\w\-\_]+)/?([\d\.]+)?/?(.*)?} do
+      load_gem_by_version
+      @rdoc_path = @gem.rdoc_path
       if params[:captures].length == 3 && !params[:captures][2].blank? 
         # we have a path
-        load_gem_by_version
-        @rdoc_path = File.join(@gem.installation_path, "doc", @gem.full_name, 'rdoc')
         full_path = File.join(@rdoc_path, params[:captures].pop)
         content_type File.extname(full_path)
         File.read(full_path)
       else
-        load_gem_by_version
-        @rdoc_path = File.join(@gem.installation_path, "doc", @gem.full_name, 'rdoc')        
         haml :doc, :layout => false
       end
     end

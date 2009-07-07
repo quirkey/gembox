@@ -17,5 +17,14 @@ module Gem
     def on_github?
       homepage =~ /github\.com\/([\w\d\-\_]+)\/([\w\d\-\_]+)\/tree/
     end
+    
+    alias :has_rdoc_checked? :has_rdoc?
+    def has_rdoc?
+      has_rdoc_checked? && File.exists?(rdoc_path)
+    end
+    
+    def rdoc_path
+      File.join(installation_path, 'doc', full_name, 'rdoc')
+    end
   end
 end
