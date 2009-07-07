@@ -1,12 +1,14 @@
 History.txt
+Manifest.txt
 PostInstall.txt
 README.rdoc
 Rakefile
-config.ru
 bin/gembox
-lib/extensions.rb
+config.ru
+gembox.gemspec
 lib/gembox.rb
 lib/gembox/app.rb
+lib/gembox/extensions.rb
 lib/gembox/gem_list.rb
 lib/gembox/gems.rb
 lib/gembox/view_helpers.rb
@@ -23,10 +25,6 @@ public/javascripts/jquery.js
 public/javascripts/jquery.metadata.js
 public/javascripts/jquery.ui.js
 public/swf/clippy.swf
-test/.bacon
-test/test_gembox_app.rb
-test/test_gembox_gems.rb
-test/test_helper.rb
 views/doc.haml
 views/file_tree.haml
 views/gem.haml

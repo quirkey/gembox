@@ -1,3 +1,11 @@
+== 0.2.0 2009-07-06
+
+* Updated to latest version of Vegas for Windows compatability
+* Links to RDoc should only display if Rdoc actually exists
+* Format the Gem description with RDoc
+* Reloads the gem list if the gem dir changes
+* Minor formatting updates
+
 == 0.1.5 2009-05-22
 
 * Fixed the config.ru so gembox can run on passenger [Thanks Lenary]

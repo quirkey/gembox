@@ -13,8 +13,9 @@ $hoe = Hoe.new('gembox', Gembox::VERSION) do |p|
   p.url = ['http://code.quirkey.com/gembox', 'http://github.com/quirkey/gembox']
   p.extra_deps = [
    ['sinatra', '>=0.9.2'],
-   ['vegas', '>=0.0.1'],
+   ['vegas', '>=0.0.3.1'],
    ['haml', '>=2.0.9'],
+   ['rdoc', '=2.4.3'],
    ['activesupport', '>=2.2.2'],
    ['mislav-will_paginate', '>=2.3.7']
   ]
