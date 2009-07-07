@@ -2,9 +2,9 @@
   %h2
     =@gem.name
     %span.version=@gem.version
-  
-  .description
-    %p=@gem.description
+  - if @gem.description
+    .description
+      =rdocify @gem.description
   .meta
     %p.authors
       By 

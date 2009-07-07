@@ -38,6 +38,11 @@ module Gembox
       time.strftime('%b %d, %Y') if time
     end
 
+    def rdocify(text)
+      @_rdoc ||= RDoc::Markup::ToHtml.new
+      @_rdoc.convert(text)
+    end
+
     def clippy(text, bgcolor='#FFFFFF')
       html = <<-EOF
         <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000"
