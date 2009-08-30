@@ -110,7 +110,7 @@ describe "Gembox App" do
 
   describe 'getting gems/name/version' do
     before do
-      get '/gems/sinatra/0.9.0.4'
+      get "/gems/sinatra/#{Sinatra::VERSION}"
     end
 
     should "display dependencies" do
@@ -122,7 +122,7 @@ describe "Gembox App" do
     end
 
     should "load gem spec specified version" do
-      body.should have_element('.version', '0.9.0.4')
+      body.should have_element('.version', Sinatra::VERSION)
     end
 
     should "display links to all versions" do

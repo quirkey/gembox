@@ -6,4 +6,6 @@
 require File.expand_path(File.dirname(__FILE__) + "/../lib/gembox")
 require 'vegas'
 
-Vegas::Runner.new(Gembox::App, 'gembox') 
+Vegas::Runner.new(Gembox::App, 'gembox', {
+ :launch_path => lambda {|r| r.args.first ? "/gems/?search=#{r.args.first}" : '' }
+})

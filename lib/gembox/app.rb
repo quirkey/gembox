@@ -61,7 +61,11 @@ module Gembox
       show_layout = params[:layout] != 'false'
       @show_as = params[:as] || 'columns'
       if @search = params[:search]
-        @gems = Gembox::Gems.search(@search).paginate :page => params[:page] 
+        @gems = Gembox::Gems.search(@search).paginate :page => params[:page]
+        if !@gems.empty? && gem = @gems.find {|k,v| k.strip == @search.strip }
+          gem = gem[1][0]
+          redirect "/gems/#{gem.name}/#{gem.version}" and return
+        end
       end
       haml "gems_#{@show_as}".to_sym, :layout => show_layout
     end

@@ -1,3 +1,10 @@
+== 0.2.1 2009-08-30
+
+* Typing in an argument in the command line will launch to that specific search: 
+e.g. $ gembox rack #=> opens gembox to the rack page.
+* If a search exactly matches a gem name it will open that gems info page instead of displaying search results
+* Updated to latest version of Vegas
+
 == 0.2.0 2009-07-06
 
 * Updated to latest version of Vegas for Windows compatability

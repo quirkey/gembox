@@ -2,11 +2,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{gembox}
-  s.version = "0.2.0"
+  s.version = "0.2.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Aaron Quint"]
-  s.date = %q{2009-07-06}
+  s.date = %q{2009-08-30}
   s.default_executable = %q{gembox}
   s.description = %q{A sinatra based interface for browsing and admiring your gems.}
   s.email = ["aaron@quirkey.com"]
@@ -18,7 +18,7 @@ Gem::Specification.new do |s|
   s.rdoc_options = ["--main", "README.rdoc"]
   s.require_paths = ["lib"]
   s.rubyforge_project = %q{quirkey}
-  s.rubygems_version = %q{1.3.3}
+  s.rubygems_version = %q{1.3.5}
   s.summary = %q{A sinatra based interface for browsing and admiring your gems.}
   s.test_files = ["test/test_gembox_app.rb", "test/test_gembox_gems.rb", "test/test_helper.rb"]
 
@@ -28,7 +28,7 @@ Gem::Specification.new do |s|
 
     if Gem::Version.new(Gem::RubyGemsVersion) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<sinatra>, [">= 0.9.2"])
-      s.add_runtime_dependency(%q<vegas>, [">= 0.0.3.1"])
+      s.add_runtime_dependency(%q<vegas>, [">= 0.1.0"])
       s.add_runtime_dependency(%q<haml>, [">= 2.0.9"])
       s.add_runtime_dependency(%q<rdoc>, ["= 2.4.3"])
       s.add_runtime_dependency(%q<activesupport>, [">= 2.2.2"])
@@ -38,7 +38,7 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<hoe>, [">= 1.8.0"])
     else
       s.add_dependency(%q<sinatra>, [">= 0.9.2"])
-      s.add_dependency(%q<vegas>, [">= 0.0.3.1"])
+      s.add_dependency(%q<vegas>, [">= 0.1.0"])
       s.add_dependency(%q<haml>, [">= 2.0.9"])
       s.add_dependency(%q<rdoc>, ["= 2.4.3"])
       s.add_dependency(%q<activesupport>, [">= 2.2.2"])
@@ -49,7 +49,7 @@ Gem::Specification.new do |s|
     end
   else
     s.add_dependency(%q<sinatra>, [">= 0.9.2"])
-    s.add_dependency(%q<vegas>, [">= 0.0.3.1"])
+    s.add_dependency(%q<vegas>, [">= 0.1.0"])
     s.add_dependency(%q<haml>, [">= 2.0.9"])
     s.add_dependency(%q<rdoc>, ["= 2.4.3"])
     s.add_dependency(%q<activesupport>, [">= 2.2.2"])
