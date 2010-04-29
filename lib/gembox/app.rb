@@ -1,7 +1,7 @@
 require 'sinatra'
 
 module Gembox
-  class App < ::Sinatra::Default
+  class App < ::Sinatra::Base
     include Gembox::ViewHelpers  
     include WillPaginate::ViewHelpers
       
