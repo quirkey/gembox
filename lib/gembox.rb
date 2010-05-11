@@ -10,7 +10,7 @@ require 'will_paginate/array'
 require 'will_paginate/view_helpers'
 
 module Gembox
-  VERSION = '0.2.1'
+  VERSION = '0.2.2'
 end
 
 require 'gembox/extensions'
