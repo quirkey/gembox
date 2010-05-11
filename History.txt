@@ -1,3 +1,7 @@
+== 0.2.2 2010-04-10
+
+* Fixed sinatra dependency, Thanks Romko Stets!
+
 == 0.2.1 2009-08-30
 
 * Typing in an argument in the command line will launch to that specific search: 
