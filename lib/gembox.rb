@@ -6,11 +6,11 @@ require 'haml'
 require 'sass'
 require 'active_support'
 require 'rdoc/markup/to_html'
-require 'will_paginate/array'
+require 'will_paginate'
 require 'will_paginate/view_helpers'
 
 module Gembox
-  VERSION = '0.2.2'
+  VERSION = '0.2.3'
 end
 
 require 'gembox/extensions'
