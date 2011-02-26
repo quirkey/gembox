@@ -22,7 +22,7 @@ Jeweler::Tasks.new do |s|
    ['vegas', '~>0.1.0'],
    ['haml', '~>2.0.9'],
    ['rdoc', '=2.4.3'],
-   ['activesupport', '~>2.2.2'],
+   ['activesupport', '~>3.0.0'],
    ['will_paginate', '~>2.3.7']
   ].each do |n, v|
     s.add_runtime_dependency(n, v)
