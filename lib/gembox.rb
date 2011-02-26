@@ -4,7 +4,7 @@ $:.unshift(File.dirname(__FILE__)) unless
 require 'rubygems'
 require 'haml'
 require 'sass'
-require 'active_support/core_ext/array'
+require 'active_support/core_ext/array/grouping'
 require 'active_support/core_ext/hash'
 require 'rdoc/markup/to_html'
 require 'will_paginate'
