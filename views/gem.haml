@@ -9,7 +9,7 @@
     %p.authors
       By 
       =@gem.authors.join(', ')
-      ='(' + link_to(@gem.email, "mailto:#{@gem.email}") + ')'
+      ='(' + link_emails(@gem) + ')'
     %p.url
       Homepage: 
       =link_to(@gem.homepage)
