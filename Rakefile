@@ -18,9 +18,9 @@ Jeweler::Tasks.new do |s|
   s.rubyforge_project = %q{quirkey}
 
   [
-   ['sinatra', '~>1.0'],
+   ['sinatra', '~>1.1.3'],
    ['vegas', '~>0.1.0'],
-   ['haml', '~>2.0.9'],
+   ['haml', '~>3.0.25'],
    ['rdoc', '=2.4.3'],
    ['activesupport', '~>3.0.0'],
    ['will_paginate', '~>2.3.7']
