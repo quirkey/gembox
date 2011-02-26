@@ -27,6 +27,12 @@ Jeweler::Tasks.new do |s|
   ].each do |n, v|
     s.add_runtime_dependency(n, v)
   end
+  [
+   ['bacon', '~>1.1.0'],
+   ['mocha', '~>0.9.12'],
+   ['nokogiri', '~>1.4.4'],
+   ['rack-test', '~>0.5.7']
+  ].each { |n, v| s.add_development_dependency(n,v) }
 end
 
 Jeweler::GemcutterTasks.new

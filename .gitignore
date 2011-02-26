@@ -1,4 +1,5 @@
 .DS_Store
 pkg/*
+tmp/*
 _site
 _layouts
