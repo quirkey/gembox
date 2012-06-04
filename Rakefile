@@ -18,15 +18,21 @@ Jeweler::Tasks.new do |s|
   s.rubyforge_project = %q{quirkey}
 
   [
-   ['sinatra', '~>1.0'],
+   ['sinatra', '~>1.1.3'],
    ['vegas', '~>0.1.0'],
-   ['haml', '~>2.0.9'],
+   ['haml', '~>3.0.25'],
    ['rdoc', '=2.4.3'],
-   ['activesupport', '~>2.2.2'],
+   ['activesupport', '~>3.0.0'],
    ['will_paginate', '~>2.3.7']
   ].each do |n, v|
     s.add_runtime_dependency(n, v)
   end
+  [
+   ['bacon', '~>1.1.0'],
+   ['mocha', '~>0.9.12'],
+   ['nokogiri', '~>1.4.4'],
+   ['rack-test', '~>0.5.7']
+  ].each { |n, v| s.add_development_dependency(n,v) }
 end
 
 Jeweler::GemcutterTasks.new

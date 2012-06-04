@@ -9,7 +9,7 @@
     %p.authors
       By 
       =@gem.authors.join(', ')
-      ='(' + link_to(@gem.email, "mailto:#{@gem.email}") + ')'
+      ='(' + link_emails(@gem) + ')'
     %p.url
       Homepage: 
       =link_to(@gem.homepage)
@@ -27,9 +27,10 @@
   %h3.toggler Dependencies
   #dependencies.toggle_area
     -@gem.dependencies.each do |dependency|
+      -requirement = dependency.respond_to?(:requirement) ? dependency.requirement : dependency.version_requirements
       .gem
         =link_to(dependency.name, "/gems/#{dependency.name}")
-        %span.version=dependency.version_requirements
+        %span.version=requirement
   %h3.toggler Other Versions
   #versions.toggle_area
     %table

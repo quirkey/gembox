@@ -69,6 +69,15 @@ module Gembox
         </object>
       EOF
     end
+
+    def link_emails(emails)
+      emails = emails.email if emails.is_a?(Gem::Specification)
+      if emails.is_a?(Array)
+        emails.map { |email| link_to(email, "mailto:#{email}") }.join(', ')
+      else
+        link_to(emails, "mailto:#{emails}")
+      end
+    end
     
   end
 end

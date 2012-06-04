@@ -31,6 +31,14 @@ To use Gembox with Passenger Pane there are a few simple steps you need to do:
 
 Then open up Passenger Pane and drag the open Gembox folder into the list on the left (You'll have to be authenticated). Now browse to http://gembox.local/ and you'll see gembox! I told you it was simple.
 
+=== HACKING:
+
+To run the test suite, check that you have the dependencies installed:
+
+  $ rake check_dependencies
+
+Then run <tt>rake test</tt>.
+
 == LICENSE:
 
 (The MIT License)

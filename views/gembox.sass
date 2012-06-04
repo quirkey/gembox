@@ -1,188 +1,192 @@
-!red = #BA2818
-!light_red = #EB9281
-!dark_red = #871D1A
-!light_grey = #CCCCCC
-!light_grey_bg = #EFEFEF
-!grey = #666
-!highlight = #F4F6E6
-!fonts = "'Franklin Gothic', 'Franklin Gothic Medium', Helvetica, sans-serif"
+$red: #ba2818
+$light_red: #eb9281
+$dark_red: #871d1a
+$light_grey: #cccccc
+$light_grey_bg: #efefef
+$grey: #666666
+$highlight: #f4f6e6
+$fonts: unquote("'Franklin Gothic', 'Franklin Gothic Medium', Helvetica, sans-serif")
+
 //
 
 body
-  :font-family = !fonts
-  :background #FFFFFF
-  :margin 0px
-  :padding 0px
-  :text-align center
-  
+  font-family: $fonts
+  background: white
+  margin: 0px
+  padding: 0px
+  text-align: center
+
 a:link,
 a:visited
-  :color = !red
-  :text-decoration none
-a:hover
-  :color = !light_red
-  :text-decoration underline
+  color: $red
+  text-decoration: none
 
-a img 
-  :border none
-  
+a:hover
+  color: $light_red
+  text-decoration: underline
+
+a img
+  border: none
+
 .contained
-  :width 960px
-  :margin 0px auto
-  :text-align left
-  :position relative
+  width: 960px
+  margin: 0px auto
+  text-align: left
+  position: relative
 
 #header
   .contained
-    :width 250px
+    width: 250px
   #logo
-    :position absolute
-    :top -20px
-    :left -135px
+    position: absolute
+    top: -20px
+    left: -135px
   h1
-    :color = !dark_red
-    :font-size 50px
-    :margin 20px 0px 0px 0px
+    color: $dark_red
+    font-size: 50px
+    margin: 20px 0px 0px 0px
     a
-      :color = !dark_red
+      color: $dark_red
     a:hover
-      :text-decoration none
+      text-decoration: none
 
 #nav
-  :background = !dark_red
-  :padding 15px
+  background: $dark_red
+  padding: 15px
   .search
-    :margin-top 20px
-    :width 100%
-    :text-align center
+    margin-top: 20px
+    width: 100%
+    text-align: center
     input
-      :font-family = !fonts
-      :font-size 18px
-      :padding 4px
+      font-family: $fonts
+      font-size: 18px
+      padding: 4px
     .search_field
-      :width 400px
-      
+      width: 400px
+
 #stats
-  :background = !light_grey_bg
-  :margin 0px 0px 10px 0px
-  :padding 2px
+  background: $light_grey_bg
+  margin: 0px 0px 10px 0px
+  padding: 2px
   p
-    :text-align center
-    :color = !grey
-  
+    text-align: center
+    color: $grey
+
 #main
   h2
-    :position relative
+    position: relative
     span.view_options
-      :font-size 14px
-      :font-weight normal
-      :color = !grey
-      :position absolute
-      :top 5px
-      :right 20px
+      font-size: 14px
+      font-weight: normal
+      color: $grey
+      position: absolute
+      top: 5px
+      right: 20px
       strong
-        :color #333
-        :font-weight normal
+        color: #333333
+        font-weight: normal
     .num
-      :color = !light_grey
+      color: $light_grey
   .column
-    :width 460px
-    :float left
+    width: 460px
+    float: left
   .gem
-    :font-size 14px
-    :margin 5px 0px
-    :padding 5px 0px
+    font-size: 14px
+    margin: 5px 0px
+    padding: 5px 0px
     .name
-      :font-size 16px
-      :margin 0px
-      :padding 0px 0px 2px 0px
+      font-size: 16px
+      margin: 0px
+      padding: 0px 0px 2px 0px
     .description
-      :font-size 12px
-      :padding 2px 0px
-      :color #999
+      font-size: 12px
+      padding: 2px 0px
+      color: #999999
     .versions
-      :color = !light_grey
+      color: $light_grey
       a
-        :color = !grey
+        color: $grey
   table#gems
-    :border-collapse collapse
-    :font-size 14px
-    :width 100%
+    border-collapse: collapse
+    font-size: 14px
+    width: 100%
     th
-      :color = !grey
-      :text-align left
-      :font-size 12px
-      :font-weight normal
-      :border-bottom 1px solid #CCC
+      color: $grey
+      text-align: left
+      font-size: 12px
+      font-weight: normal
+      border-bottom: 1px solid #cccccc
     td
-      :padding 4px 4px 4px 0px
-      :vertical-align top
+      padding: 4px 4px 4px 0px
+      vertical-align: top
     tr.summary td
-      :padding-top 0px 
-      
+      padding-top: 0px
+
 #gem
   .description
-    :font-size 18px
-    :color = #333
+    font-size: 18px
+    color: #333333
   .meta
-    :color = !grey
+    color: $grey
   ul.files,
   ul.files li ul
-    :list-style none
-    :font-size 14px
-    :font-weight normal
-    :margin 0px
-    :padding 4px 0px 0px
-  ul.files 
+    list-style: none
+    font-size: 14px
+    font-weight: normal
+    margin: 0px
+    padding: 4px 0px 0px
+  ul.files
     li
-      :padding 4px 0px
+      padding: 4px 0px
     li ul li
-      :padding-left 10px
+      padding-left: 10px
     img
-      :vertical-align top
-    .controls a 
-      :padding 0px 4px 0px 0px
-    .file_hover 
-      :background = !highlight
+      vertical-align: top
+    .controls a
+      padding: 0px 4px 0px 0px
+    .file_hover
+      background: $highlight
 
 .pagination
-  :font-size 12px
-  :color = !grey
-  :width 100%
-  :background = !light_grey_bg
-  :padding 4px
-  :text-align right
+  font-size: 12px
+  color: $grey
+  width: 100%
+  background: $light_grey_bg
+  padding: 4px
+  text-align: right
   a
-    :color = !dark_red
-  a, 
+    color: $dark_red
+  a,
   span
-    :padding 0px 4px
-  
+    padding: 0px 4px
+
 #footer
-  :margin 20px
-  :padding 10px
-  :border-top = 1px solid !light_grey
+  margin: 20px
+  padding: 10px
+  border-top: 1px solid $light_grey
   .copyright
-    :font-size 12px
-    
+    font-size: 12px
+
 #smallnav
-  :background = !dark_red
-  :text-align center
-  :width auto
-  :padding 5px
+  background: $dark_red
+  text-align: center
+  width: auto
+  padding: 5px
   a
-    :color #FFF
-  .back_link 
-    :float left
+    color: white
+  .back_link
+    float: left
   .viewing
-    :color = !light_grey
+    color: $light_grey
+
 #docframe
-  :border none
-  :padding none
-  :margin none
-  :width 100%
-  :height 95%
+  border: none
+  padding: none
+  margin: none
+  width: 100%
+  height: 95%
+
 .clear
-  :clear both
-  :line-height 0px
-  :height 0px
+  clear: both
+  line-height: 0px
+  height: 0px
